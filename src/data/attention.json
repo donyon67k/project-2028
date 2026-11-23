@@ -1,0 +1,126 @@
+{
+ "at": "2026-11-23T20:47:36.896Z",
+ "method": "news-v1",
+ "people": {
+  "harris": {
+   "news7": 35,
+   "race30": 60,
+   "gdelt": 0.071
+  },
+  "newsom": {
+   "news7": 92,
+   "race30": 56,
+   "gdelt": 0.127
+  },
+  "aoc": {
+   "news7": 100,
+   "race30": 100,
+   "gdelt": 0.037
+  },
+  "buttigieg": {
+   "news7": 50,
+   "race30": 64,
+   "gdelt": 0.0313
+  },
+  "shapiro": {
+   "news7": 74,
+   "race30": 46,
+   "gdelt": 0.0588
+  },
+  "pritzker": {
+   "news7": 28,
+   "race30": 31,
+   "gdelt": null
+  },
+  "whitmer": {
+   "news7": 71,
+   "race30": 15,
+   "gdelt": null
+  },
+  "beshear": {
+   "news7": 49,
+   "race30": 56,
+   "gdelt": null
+  },
+  "booker": {
+   "news7": 35,
+   "race30": 28,
+   "gdelt": null
+  },
+  "murphy": {
+   "news7": 8,
+   "race30": 16,
+   "gdelt": null
+  },
+  "khanna": {
+   "news7": 44,
+   "race30": 33,
+   "gdelt": null
+  },
+  "kelly": {
+   "news7": 100,
+   "race30": 50,
+   "gdelt": null
+  },
+  "emanuel": {
+   "news7": 45,
+   "race30": 23,
+   "gdelt": null
+  },
+  "ossoff": {
+   "news7": 34,
+   "race30": 64,
+   "gdelt": null
+  },
+  "moore": {
+   "news7": 40,
+   "race30": 34,
+   "gdelt": null
+  },
+  "vance": {
+   "news7": 100,
+   "race30": 100,
+   "gdelt": null
+  },
+  "rubio": {
+   "news7": 100,
+   "race30": 100,
+   "gdelt": null
+  },
+  "desantis": {
+   "news7": 100,
+   "race30": 72,
+   "gdelt": null
+  },
+  "cruz": {
+   "news7": 80,
+   "race30": 21,
+   "gdelt": null
+  },
+  "hawley": {
+   "news7": 41,
+   "race30": 16,
+   "gdelt": null
+  },
+  "trumpjr": {
+   "news7": 55,
+   "race30": 26,
+   "gdelt": null
+  },
+  "youngkin": {
+   "news7": 16,
+   "race30": 14,
+   "gdelt": null
+  },
+  "kemp": {
+   "news7": 35,
+   "race30": 20,
+   "gdelt": null
+  },
+  "haley": {
+   "news7": 20,
+   "race30": 50,
+   "gdelt": null
+  }
+ }
+}
