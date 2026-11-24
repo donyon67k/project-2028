@@ -1,17 +1,16 @@
-// Builds the pixel portraits on the podiums from each person's public portrait photo.
-// Each photo is cropped to a square around the face, shrunk to PX×PX and shown with
-// nearest-neighbor scaling, so it reads as an 8-bit version of the real portrait.
-// Credits and licenses are saved next to it (CC BY-SA photos need attribution).
-//   npm run portraits            all people missing a portrait
-//   npm run portraits -- --force rebuild every portrait
+// Portraits for the 2028 field, from each person's public portrait photo.
+//  - public/portraits/full/<id>.jpg   the real portrait, shown in the candidate file
+//  - src/data/portraits.json          size, credit and license (CC BY / BY-SA photos need the credit)
+// The pixel person on the podium is drawn from src/data/looks.js (set by hand from these photos).
+//   npm run portraits            people missing a portrait
+//   npm run portraits -- --force download every portrait again
 import { execFileSync } from 'node:child_process'
 import { mkdirSync, existsSync, writeFileSync, readFileSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
 import { FIELD } from '../src/data/field.js'
 
-const PX = 40
-const OUT_DIR = 'public/portraits'
+const FULL_DIR = 'public/portraits/full'
 const META = 'src/data/portraits.json'
 const UA = 'Project2028/0.1 (https://github.com/donyon67k/project-2028)'
 const force = process.argv.includes('--force')
@@ -24,21 +23,21 @@ async function json(url) {
   return r.json()
 }
 
-mkdirSync(OUT_DIR, { recursive: true })
+mkdirSync(FULL_DIR, { recursive: true })
 const meta = existsSync(META) ? JSON.parse(readFileSync(META, 'utf8')) : {}
 const tmp = join(tmpdir(), 'p2028-portraits')
 mkdirSync(tmp, { recursive: true })
 
 for (const p of FIELD) {
-  const out = join(OUT_DIR, `${p.id}.png`)
-  if (!force && meta[p.id] && existsSync(out)) continue
+  const full = join(FULL_DIR, `${p.id}.jpg`)
   try {
+    if (!force && meta[p.id] && existsSync(full)) continue
     const title = encodeURIComponent((p.wiki || p.name).replace(/ /g, '_'))
     const sum = await json(`https://en.wikipedia.org/api/rest_v1/page/summary/${title}`)
     const img = sum.originalimage?.source || sum.thumbnail?.source
     if (!img) throw new Error('no portrait on the page')
     const file = decodeURIComponent(img.split('?')[0].split('/').pop().replace(/^\d+px-/, ''))
-    const q = await json(`https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url|extmetadata|size&iiurlwidth=240&titles=${encodeURIComponent(`File:${file}`)}`)
+    const q = await json(`https://commons.wikimedia.org/w/api.php?action=query&format=json&prop=imageinfo&iiprop=url|extmetadata|size&iiurlwidth=300&titles=${encodeURIComponent(`File:${file}`)}`)
     const info = Object.values(q.query.pages)[0]?.imageinfo?.[0]
     if (!info) throw new Error(`no file info for ${file}`)
     const m = info.extmetadata || {}
@@ -46,25 +45,20 @@ for (const p of FIELD) {
     if (!r.ok) throw new Error(`${r.status} downloading`)
     const raw = join(tmp, `${p.id}.src`)
     writeFileSync(raw, Buffer.from(await r.arrayBuffer()))
-    const w = info.thumbwidth
-    const h = info.thumbheight
-    const side = Math.min(w, h)
-    // Portraits put the face in the upper part of the frame: crop a square from near the top.
-    const offY = h > w ? Math.round(Math.min(h - side, h * 0.06)) : 0
-    const offX = w > h ? Math.round((w - side) / 2) : 0
-    execFileSync('sips', ['-s', 'format', 'png', '-c', String(side), String(side), '--cropOffset', String(offY), String(offX), raw, '--out', join(tmp, `${p.id}.png`)], { stdio: 'ignore' })
-    execFileSync('sips', ['-z', String(PX), String(PX), join(tmp, `${p.id}.png`), '--out', out], { stdio: 'ignore' })
+    execFileSync('sips', ['-s', 'format', 'jpeg', '-s', 'formatOptions', '82', raw, '--out', full], { stdio: 'ignore' })
     meta[p.id] = {
-      src: `portraits/${p.id}.png`,
+      full: `portraits/full/${p.id}.jpg`,
+      w: info.thumbwidth,
+      h: info.thumbheight,
       credit: strip(m.Artist?.value) || 'Unknown',
       license: strip(m.LicenseShortName?.value) || 'See source',
       page: info.descriptionurl,
     }
-    console.log(`✓ ${p.name.padEnd(26)} ${meta[p.id].license} · ${meta[p.id].credit.slice(0, 50)}`)
+    await sleep(400)
+    console.log(`✓ ${p.name.padEnd(26)} ${meta[p.id].license}`)
   } catch (e) {
     console.log(`✗ ${p.name}: ${e.message}`)
   }
-  await sleep(400)
 }
 
 writeFileSync(META, `${JSON.stringify(meta, null, 2)}\n`)

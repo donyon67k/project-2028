@@ -1,7 +1,7 @@
 import { PARTIES, STATUS } from '../data/field.js'
 import { stageFor } from '../lib/field.js'
 import { Help } from './Explainer.jsx'
-import { Portrait } from './Portrait.jsx'
+import { PersonSprite } from './Portrait.jsx'
 
 const lastName = (n) => n.replace(/ (Jr\.|Sr\.|III|II)$/, '').split(' ').pop()
 
@@ -11,7 +11,7 @@ function Podium({ p, center, onPick }) {
     <button type="button" className={`podium ${lit ? 'lit' : 'radar'} ${center ? 'center' : ''}`} onClick={() => onPick(p.id)}
       title={`${p.name} · ${STATUS[p.status].label} · attention ${p.score.index}`}>
       {center && <span className="spot" aria-hidden="true" />}
-      <span className="podium-head"><Portrait person={p} size={48} /></span>
+      <span className="podium-head"><PersonSprite person={p} size={52} /></span>
       <span className="lectern">
         <span className="lectern-top" />
         <span className="lectern-name pixel">{(p.short || lastName(p.name)).toUpperCase()}</span>

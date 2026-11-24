@@ -1,144 +1,192 @@
 {
   "harris": {
-    "src": "portraits/harris.png",
+    "full": "portraits/full/harris.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "Lawrence Jackson",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Kamala_Harris_Vice_Presidential_Portrait.jpg"
   },
   "newsom": {
-    "src": "portraits/newsom.png",
-    "credit": "Charles Ommanney – Office of the Governor of California",
+    "full": "portraits/full/newsom.jpg",
+    "w": 300,
+    "h": 400,
+    "credit": "Charles Ommanney \u2013 Office of the Governor of California",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Governor_of_California_Gavin_Newsom_(cropped_3x4).jpg"
   },
   "aoc": {
-    "src": "portraits/aoc.png",
+    "full": "portraits/full/aoc.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "Franmarie Metzler; U.S. House Office of Photography",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Alexandria_Ocasio-Cortez_Official_Portrait.jpg"
   },
   "buttigieg": {
-    "src": "portraits/buttigieg.png",
+    "full": "portraits/full/buttigieg.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "United States Department of Transportation",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Pete_Buttigieg,_Secretary_of_Transportation.jpg"
   },
   "shapiro": {
-    "src": "portraits/shapiro.png",
+    "full": "portraits/full/shapiro.jpg",
+    "w": 300,
+    "h": 444,
     "credit": "Maryland GovPics",
     "license": "CC BY 2.0",
     "page": "https://commons.wikimedia.org/wiki/File:Gov._Shapiro.jpg"
   },
   "pritzker": {
-    "src": "portraits/pritzker.png",
+    "full": "portraits/full/pritzker.jpg",
+    "w": 300,
+    "h": 413,
     "credit": "Oscar Garza",
     "license": "CC BY-SA 4.0",
     "page": "https://commons.wikimedia.org/wiki/File:Governor_JB_Pritzker_Official_Portrait.jpg"
   },
   "whitmer": {
-    "src": "portraits/whitmer.png",
+    "full": "portraits/full/whitmer.jpg",
+    "w": 300,
+    "h": 400,
     "credit": "City of Detroit",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:8R4A9872_(53367444225)_(Whitmer1).jpg"
   },
   "beshear": {
-    "src": "portraits/beshear.png",
+    "full": "portraits/full/beshear.jpg",
+    "w": 300,
+    "h": 400,
     "credit": "Governor Andy Beshear",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Andy_Beshear_in_April_2026_(cropped_3).jpg"
   },
   "booker": {
-    "src": "portraits/booker.png",
+    "full": "portraits/full/booker.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "U.S. Senate",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Cory_Booker,_official_portrait_(119th_Congress).jpg"
   },
   "murphy": {
-    "src": "portraits/murphy.png",
+    "full": "portraits/full/murphy.jpg",
+    "w": 300,
+    "h": 401,
     "credit": "Chris Murphy",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Chris_Murphy_in_Paris,_France_2025_(headshot).jpg"
   },
   "khanna": {
-    "src": "portraits/khanna.png",
+    "full": "portraits/full/khanna.jpg",
+    "w": 300,
+    "h": 400,
     "credit": "U.S. Congress/Eric Connolly",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Ro_Khanna,_official_portrait,_115th_Congress_(3x4).jpg"
   },
   "kelly": {
-    "src": "portraits/kelly.png",
+    "full": "portraits/full/kelly.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "John Shinkle, U.S. Senate Photographic Services",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Mark_Kelly_Official_Portrait_119th.jpg"
   },
   "emanuel": {
-    "src": "portraits/emanuel.png",
+    "full": "portraits/full/emanuel.jpg",
+    "w": 300,
+    "h": 379,
     "credit": "U.S. Embassy in Japan",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Ambassador-emanuel-portrait_(cropped).jpg"
   },
   "ossoff": {
-    "src": "portraits/ossoff.png",
+    "full": "portraits/full/ossoff.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "U.S. Senate Photographic Studio",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Jon_Ossoff_Senate_Portrait_2021.jpg"
   },
   "moore": {
-    "src": "portraits/moore.png",
+    "full": "portraits/full/moore.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "Maryland State Government",
     "license": "CC BY-SA 4.0",
     "page": "https://commons.wikimedia.org/wiki/File:Wes_Moore_Official_Governor_Portrait.jpg"
   },
   "vance": {
-    "src": "portraits/vance.png",
+    "full": "portraits/full/vance.jpg",
+    "w": 300,
+    "h": 374,
     "credit": "Emily J. Higgins",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:March_2026_Official_Vice_Presidential_Portrait_of_JD_Vance_(medium_crop)_(2).jpg"
   },
   "rubio": {
-    "src": "portraits/rubio.png",
+    "full": "portraits/full/rubio.jpg",
+    "w": 300,
+    "h": 377,
     "credit": "U.S. Department of State",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Official_portrait_of_Secretary_Marco_Rubio_(cropped)(2).jpg"
   },
   "desantis": {
-    "src": "portraits/desantis.png",
+    "full": "portraits/full/desantis.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "Government of Florida",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Ron_DeSantis_official_photo.jpg"
   },
   "cruz": {
-    "src": "portraits/cruz.png",
+    "full": "portraits/full/cruz.jpg",
+    "w": 300,
+    "h": 401,
     "credit": "U.S. Senate Photographic Studio",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Ted_Cruz_official_116th_portrait_(3x4_cropped).jpg"
   },
   "hawley": {
-    "src": "portraits/hawley.png",
+    "full": "portraits/full/hawley.jpg",
+    "w": 300,
+    "h": 373,
     "credit": "Office of Senator Josh Hawley",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Josh_Hawley_(cropped)(b).jpg"
   },
   "trumpjr": {
-    "src": "portraits/trumpjr.png",
+    "full": "portraits/full/trumpjr.jpg",
+    "w": 300,
+    "h": 399,
     "credit": "Gage Skidmore from Surprise, AZ, United States of America",
     "license": "CC BY-SA 4.0",
     "page": "https://commons.wikimedia.org/wiki/File:Donald_Trump,_Jr._(55021618832)_(cropped_2).jpg"
   },
   "youngkin": {
-    "src": "portraits/youngkin.png",
+    "full": "portraits/full/youngkin.jpg",
+    "w": 300,
+    "h": 375,
     "credit": "Glenn Youngkin",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Youngkin_Governor_Portrait.jpg"
   },
   "kemp": {
-    "src": "portraits/kemp.png",
+    "full": "portraits/full/kemp.jpg",
+    "w": 300,
+    "h": 380,
     "credit": "Governor's Photographer, Office of Governor Brian P. Kemp",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Brian_Kemp_portrait,_2024_(cropped)_(cropped).jpg"
   },
   "haley": {
-    "src": "portraits/haley.png",
+    "full": "portraits/full/haley.jpg",
+    "w": 300,
+    "h": 373,
     "credit": "United States Department of State",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Nikki_Haley_official_photo.jpg"

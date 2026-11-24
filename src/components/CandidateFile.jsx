@@ -21,7 +21,7 @@ export default function CandidateFile({ person: p, score, onClose }) {
       <div className={`about cand-file party-${p.party}`} role="dialog" aria-label={`${p.name} file`} tabIndex={-1} ref={panel}
         onMouseDown={(e) => e.stopPropagation()} onKeyDown={(e) => { if (e.key === 'Escape') { e.stopPropagation(); onClose() } }}>
         <div className="about-head">
-          <Portrait person={p} size={72} />
+          <Portrait person={p} width={96} />
           <div>
             <div className="stamp">CANDIDATE FILE · {PARTIES[p.party].name.toUpperCase()} · {STATES[p.home]?.toUpperCase() || p.home}</div>
             <h2 className={`pixel ${p.party === 'D' ? 'glow-dem' : 'glow-rep'}`}>{p.name.toUpperCase()}</h2>

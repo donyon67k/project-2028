@@ -139,9 +139,9 @@
 .portrait { position: relative; display: inline-block; flex: none; background: #000; border: 2px solid #000; box-shadow: 0 0 0 2px var(--pc, #4488ff); overflow: hidden; }
 .portrait.party-D { --pc: var(--dem); }
 .portrait.party-R { --pc: var(--rep); }
-.portrait img { display: block; width: 100%; height: 100%; image-rendering: pixelated; filter: contrast(1.08) saturate(1.1); }
-/* CRT scanlines over the photo */
-.portrait::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(rgba(0, 0, 0, 0.18) 0 1px, transparent 1px 3px); pointer-events: none; }
-.podium-head .portrait { margin-bottom: 2px; }
+.portrait img { display: block; width: 100%; height: auto; }
+/* faint CRT scanlines over the photo */
+.portrait::after { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(rgba(0, 0, 0, 0.08) 0 1px, transparent 1px 3px); pointer-events: none; }
+.person-sprite { display: block; }
 .photo-credit { font-size: 10px; margin-top: 10px; border-top: 1px dashed var(--border-dim); padding-top: 6px; }
 .photo-credit a { color: inherit; }
