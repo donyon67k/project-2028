@@ -121,6 +121,11 @@
    "news7": 20,
    "race30": 50,
    "gdelt": null
+  },
+  "mcentee": {
+   "news7": 14,
+   "race30": 11,
+   "gdelt": null
   }
  }
 }

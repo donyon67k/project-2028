@@ -4,16 +4,19 @@
 //
 //   npm run attention            refresh the bundled file
 //   npm run attention -- --live  also write the live copy
+//   npm run attention -- --only=mcentee,kemp   refresh just these people, keep everyone else
 //
 // Sources: Google News RSS search (story counts, capped at 100 per query) and, when it
 // answers, GDELT's DOC API (share of all monitored coverage, no cap). GDELT allows one
 // request every 5 s per address, so the script spaces requests and skips it on refusal.
-import { mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { FIELD } from '../src/data/field.js'
 
 const UA = 'Project2028/data (+https://github.com/donyon67k/project-2028)'
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 const live = process.argv.includes('--live')
+const only = process.argv.find((a) => a.startsWith('--only='))?.slice(7).split(',')
+const FILE = new URL('../src/data/attention.json', import.meta.url)
 
 async function gnewsCount(q, days) {
   const url = `https://news.google.com/rss/search?q=${encodeURIComponent(`${q} when:${days}d`)}&hl=en-US&gl=US&ceid=US:en`
@@ -41,9 +44,11 @@ async function gdeltVolume(name) {
   return null
 }
 
-const out = { at: new Date().toISOString(), method: 'news-v1', people: {} }
-for (const p of FIELD) {
-  const q = `"${p.name}"`
+const prev = only && existsSync(FILE) ? JSON.parse(readFileSync(FILE, 'utf8')) : null
+const out = prev || { at: new Date().toISOString(), method: 'news-v1', people: {} }
+for (const p of FIELD.filter((x) => !only || only.includes(x.id))) {
+  // aka = other names the press uses (e.g. "Johnny McEntee")
+  const q = p.aka ? `("${[p.name, ...p.aka].join('" OR "')}")` : `"${p.name}"`
   try {
     const news7 = await gnewsCount(q, 7)
     await sleep(1200)
@@ -58,7 +63,7 @@ for (const p of FIELD) {
 }
 
 const json = `${JSON.stringify(out, null, 1)}\n`
-writeFileSync(new URL('../src/data/attention.json', import.meta.url), json)
+writeFileSync(FILE, json)
 if (live) {
   mkdirSync(new URL('../live/', import.meta.url), { recursive: true })
   writeFileSync(new URL('../live/attention.json', import.meta.url), json)

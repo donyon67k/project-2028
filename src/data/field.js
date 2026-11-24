@@ -31,6 +31,7 @@ const SRC = {
   haley: { label: 'The Hill, Nov 2026', url: 'https://thehill.com/homenews/administration/6214225-nikki-haley-not-running-2028/' },
   moore: { label: 'Interview on NBC (via Fox News)', url: 'https://www.foxnews.com/media/maryland-democrat-reveals-whether-hell-run-president-2028' },
   rubio: { label: 'Political.org, Nov 5 2026', url: 'https://political.org/2026/11/05/midterm-rout-reshuffles-gop-2028-field-leaving-vice-president-jd-vance-exposed-and-secretary-of-state-marco-rubio-watching/' },
+  mcentee: { label: 'CT Post, Nov 2026', url: 'https://www.ctpost.com/sports/uconn-football/article/john-mcentee-uconn-republican-president-primary-22526212.php' },
   ossoffWin: { label: 'OPB / AP, Nov 3 2026', url: 'https://www.opb.org/article/2026/11/03/democrat-jon-ossoff-wins-reelection-to-u-s-senate-from-georgia/' },
 }
 
@@ -109,6 +110,9 @@ export const FIELD = [
   { id: 'kemp', name: 'Brian Kemp', party: 'R', home: 'GA', status: 'speculated', role: 'Governor of Georgia (term ends Jan 2027)',
     past: ['Georgia Secretary of State (2010–2018)'],
     note: 'Term-limited; frequently named as a possible candidate.', src: SRC.tracker },
+  { id: 'mcentee', name: 'John McEntee', aka: ['Johnny McEntee'], wiki: 'John McEntee (political aide)', party: 'R', home: 'CA', status: 'speculated', role: 'Former Trump White House aide; conservative influencer',
+    past: ['Director, White House Presidential Personnel Office (2020–2021)', 'Quarterback, UConn'],
+    note: 'Teased a run online and won a Nov 12, 2026 college Republican straw poll, but says he has “no intention of running for president at the moment.”', src: SRC.mcentee },
   { id: 'haley', name: 'Nikki Haley', party: 'R', home: 'SC', status: 'out', role: 'Former U.S. Ambassador to the UN (2017–2018)',
     past: ['2024 presidential runner-up', 'Governor of South Carolina (2011–2017)'],
     note: 'Said in November 2026: she is not running in 2028.', src: SRC.haley },

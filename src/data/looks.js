@@ -27,5 +27,6 @@ export const LOOKS = {
   trumpjr: { skin: '#d8a088', hairColor: '#2a1e18', hair: 'short', beard: '#3a2a22', suit: NAVY, shirt: '#f0f0f0', tie: null },
   youngkin: { skin: '#e8b49a', hairColor: '#6a5040', hair: 'short', suit: NAVY, shirt: '#f0f0f0', tie: '#c8202a' },
   kemp: { skin: '#e0a890', hairColor: '#b8b0a8', hair: 'short', suit: '#2a3a6a', shirt: '#f0f0f0', tie: '#7ab0e0' },
+  mcentee: { skin: '#d8a084', hairColor: '#2a1e18', hair: 'short', suit: '#1c2228', shirt: '#1c2228', tie: null },
   haley: { skin: '#c8947a', hairColor: '#1c1414', hair: 'long', suit: BLACK, shirt: BLACK, tie: null },
 }

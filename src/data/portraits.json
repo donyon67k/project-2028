@@ -11,7 +11,7 @@
     "full": "portraits/full/newsom.jpg",
     "w": 300,
     "h": 400,
-    "credit": "Charles Ommanney \u2013 Office of the Governor of California",
+    "credit": "Charles Ommanney – Office of the Governor of California",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Governor_of_California_Gavin_Newsom_(cropped_3x4).jpg"
   },
@@ -190,5 +190,13 @@
     "credit": "United States Department of State",
     "license": "Public domain",
     "page": "https://commons.wikimedia.org/wiki/File:Nikki_Haley_official_photo.jpg"
+  },
+  "mcentee": {
+    "full": "portraits/full/mcentee.jpg",
+    "w": 300,
+    "h": 392,
+    "credit": "Bacon11102",
+    "license": "CC0",
+    "page": "https://commons.wikimedia.org/wiki/File:Updated_McEntee_(cropped_2).png"
   }
 }
