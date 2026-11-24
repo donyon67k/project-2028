@@ -1,7 +1,7 @@
 import { PARTIES, STATUS } from '../data/field.js'
 import { stageFor } from '../lib/field.js'
 import { Help } from './Explainer.jsx'
-import { AgentSprite } from './Sprites.jsx'
+import { Portrait } from './Portrait.jsx'
 
 const lastName = (n) => n.replace(/ (Jr\.|Sr\.|III|II)$/, '').split(' ').pop()
 
@@ -11,7 +11,7 @@ function Podium({ p, center, onPick }) {
     <button type="button" className={`podium ${lit ? 'lit' : 'radar'} ${center ? 'center' : ''}`} onClick={() => onPick(p.id)}
       title={`${p.name} · ${STATUS[p.status].label} · attention ${p.score.index}`}>
       {center && <span className="spot" aria-hidden="true" />}
-      <span className="podium-head"><AgentSprite name={p.name} party={p.party} size={44} /></span>
+      <span className="podium-head"><Portrait person={p} size={48} /></span>
       <span className="lectern">
         <span className="lectern-top" />
         <span className="lectern-name pixel">{(p.short || lastName(p.name)).toUpperCase()}</span>
@@ -44,7 +44,6 @@ export function DebateStage({ party, field, scores, onPick }) {
         </div>
         <div className="stage-edge" />
       </div>
-      {s.declared === 0 && <div className="stage-note">No major candidate has declared yet. Faded podiums are people with real coverage and polling who are weighing a run. They light up when they announce.</div>}
       {!!s.wings.length && (
         <div className="wings">
           <span className="pixel wings-tag">IN THE WINGS</span>

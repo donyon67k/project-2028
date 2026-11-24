@@ -4,7 +4,7 @@ import { STATES } from '../data/wiki.js'
 import { searchHeadlines } from '../lib/field.js'
 import { timeAgo } from '../lib/util.js'
 import { Help } from './Explainer.jsx'
-import { AgentSprite } from './Sprites.jsx'
+import { Portrait, portraitCredit } from './Portrait.jsx'
 
 export default function CandidateFile({ person: p, score, onClose }) {
   const panel = useRef(null)
@@ -21,7 +21,7 @@ export default function CandidateFile({ person: p, score, onClose }) {
       <div className={`about cand-file party-${p.party}`} role="dialog" aria-label={`${p.name} file`} tabIndex={-1} ref={panel}
         onMouseDown={(e) => e.stopPropagation()} onKeyDown={(e) => { if (e.key === 'Escape') { e.stopPropagation(); onClose() } }}>
         <div className="about-head">
-          <AgentSprite name={p.name} party={p.party} size={56} />
+          <Portrait person={p} size={72} />
           <div>
             <div className="stamp">CANDIDATE FILE · {PARTIES[p.party].name.toUpperCase()} · {STATES[p.home]?.toUpperCase() || p.home}</div>
             <h2 className={`pixel ${p.party === 'D' ? 'glow-dem' : 'glow-rep'}`}>{p.name.toUpperCase()}</h2>
@@ -74,6 +74,11 @@ export default function CandidateFile({ person: p, score, onClose }) {
             ))}
           </ul>
         </section>
+        {portraitCredit(p.id) && (
+          <div className="photo-credit dim">
+            Portrait adapted from a photo by {portraitCredit(p.id).credit} · {portraitCredit(p.id).license} · <a href={portraitCredit(p.id).page} target="_blank" rel="noreferrer">source ↗</a>
+          </div>
+        )}
       </div>
     </div>
   )

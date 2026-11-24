@@ -3,6 +3,7 @@ import attentionSnapshot from './data/attention.json'
 import { CALENDAR, DEBATES, FIELD, POLLS } from './data/field.js'
 import { BATTLEGROUNDS, EV, SPLITS_2024, WON_2024, evTotals } from './data/electoral.js'
 import { STATES } from './data/wiki.js'
+import { mainScreen } from './data/config.js'
 import { RESULT_COLORS, countdown, pad } from './lib/util.js'
 import { scoreField, searchHeadlines } from './lib/field.js'
 import UsMap from './components/UsMap.jsx'
@@ -15,11 +16,18 @@ import { Icon } from './components/Sprites.jsx'
 import './App.css'
 import './stage.css'
 
-const PAGES = [
+const ALL_PAGES = [
   { key: 'stages', label: 'DEBATE STAGES', icon: 'senate' },
   { key: 'map', label: 'ELECTORAL MAP', icon: 'governor' },
   { key: 'learn', label: 'BRIEFING ROOM', icon: 'news' },
 ]
+const HOME = mainScreen()
+// The main screen always sits first in the nav.
+const PAGES = [...ALL_PAGES.filter((p) => p.key === HOME), ...ALL_PAGES.filter((p) => p.key !== HOME)]
+const pageFromHash = () => {
+  const k = typeof location !== 'undefined' ? location.hash.slice(1).split('/')[0] : ''
+  return ALL_PAGES.some((p) => p.key === k) ? k : HOME
+}
 const NEWS_MS = 10 * 60 * 1000
 
 const BOOT = [
@@ -143,7 +151,7 @@ function MapDesk({ selected }) {
 
 export default function App() {
   const [booted, setBooted] = useState(false)
-  const [page, setPage] = useState(() => (typeof location !== 'undefined' && /^#(map|learn)\b/.test(location.hash) ? location.hash.slice(1) : 'stages'))
+  const [page, setPage] = useState(pageFromHash)
   const [aboutOpen, setAboutOpen] = useState(false)
   const [person, setPerson] = useState(null)
   const [lesson, setLesson] = useState(null)
@@ -152,6 +160,7 @@ export default function App() {
   const [heads, setHeads] = useState([])
   const scores = useMemo(() => scoreField(FIELD, attentionSnapshot, POLLS), [])
   const finishBoot = useCallback(() => setBooted(true), [])
+  const noneDeclared = !FIELD.some((p) => p.status === 'declared')
 
   useEffect(() => {
     const load = () => searchHeadlines('"2028" president OR presidential primary', 3, 14).then(setHeads).catch(() => {})
@@ -170,7 +179,13 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey)
   }, [state, region])
 
-  const go = (key) => { setPage(key); history.replaceState(null, '', key === 'stages' ? location.pathname : `#${key}`) }
+  useEffect(() => {
+    const onHash = () => setPage(pageFromHash())
+    window.addEventListener('hashchange', onHash)
+    return () => window.removeEventListener('hashchange', onHash)
+  }, [])
+
+  const go = (key) => { setPage(key); history.replaceState(null, '', key === HOME ? location.pathname : `#${key}`) }
 
   const { fills, blips, labels } = useMemo(() => {
     const fills = {}
@@ -224,10 +239,16 @@ export default function App() {
         <main className={`main2028 page-${page}`}>
           {page === 'stages' && (
             <>
-              <div className="stages">
-                <DebateStage party="D" field={FIELD} scores={scores} onPick={setPerson} />
-                <DebateStage party="R" field={FIELD} scores={scores} onPick={setPerson} />
-              </div>
+              <section className="stage-panel pixel-border">
+                <div className="panel-label">
+                  <span className="pixel">DEBATE STAGES · 2028 PRIMARIES</span>
+                  <span className="dim">{noneDeclared ? 'NO MAJOR CANDIDATE DECLARED YET · FADED = ON THE RADAR' : 'SELECT A CANDIDATE'}</span>
+                </div>
+                <div className="stages">
+                  <DebateStage party="D" field={FIELD} scores={scores} onPick={setPerson} />
+                  <DebateStage party="R" field={FIELD} scores={scores} onPick={setPerson} />
+                </div>
+              </section>
               <RaceDesk scores={scores} onPick={setPerson} />
             </>
           )}
